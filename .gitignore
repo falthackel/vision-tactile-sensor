@@ -1,0 +1,20 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+# Compiled extensions
+*.so
+
+# Data and Results
+*.mp4
