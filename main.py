@@ -2,19 +2,20 @@ import argparse
 
 from modules.pipeline import VideoPipeline
 from modules.shear.shear_processor import ShearProcessor
+from modules.torque.torque_processor import TorqueProcessor
 
 
 def main():
     parser = argparse.ArgumentParser(description="Run video shear analysis pipeline.")
     parser.add_argument(
-        "--video_path",
+        "--video-path",
         "-v",
         type=str,
         default="0",  # Webcam by default
         help='Path to input video file or "0" for webcam.',
     )
     parser.add_argument(
-        "--output_dir",
+        "--output-dir",
         "-o",
         type=str,
         default="./output_videos",
@@ -33,6 +34,14 @@ def main():
         name="shear_analysis", method="weighted", h_field=13, w_field=18
     )
     pipeline.add_processor(shear_processor)
+
+    # Add template matching processor
+    template_processor = TorqueProcessor(
+        name="torque_analysis",
+        templates_folder="./modules/torque/templates",
+        threshold=1.0,
+    )
+    pipeline.add_processor(template_processor)
 
     # Run pipeline
     pipeline.run(show_display=True)
