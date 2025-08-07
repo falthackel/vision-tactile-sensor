@@ -42,8 +42,8 @@ def main():
         "thresholded_output.mp4",
         fourcc,
         fps,
-        # (slice_width[1] - slice_width[0], slice_height[1] - slice_height[0]),
-        (width, height),
+        (slice_width[1] - slice_width[0], slice_height[1] - slice_height[0]),
+        # (width, height),
     )
     out_annotated = cv2.VideoWriter(
         "annotated_original_output.mp4", fourcc, fps, (width, height)
